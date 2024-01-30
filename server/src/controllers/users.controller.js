@@ -11,7 +11,9 @@ usersController.getAllUsers = async (req, res) => {
     const jsonData = await JSON.parse(data);
     res.send(jsonData);
   } catch (err) {
-    return res.send("Fail reading users");
+    return res.send({
+      errors: "Fail reading users",
+    });
   }
 };
 
@@ -25,7 +27,7 @@ usersController.createUser = async (req, res) => {
 
     const usersList = [...jsonUsersData, newUserData];
 
-    res.send("User created");
+    res.send(usersList);
     await fsPromises.writeFile(fileData, JSON.stringify(usersList));
   } catch (err) {
     return res.send("Error creating user");
@@ -51,7 +53,7 @@ usersController.updateUser = async (req, res) => {
 
     await fsPromises.writeFile(fileData, JSON.stringify(modifiedUsers));
 
-    res.send("Modified user");
+    res.send(modifiedUsers);
   } catch (err) {
     return res.send("We can't fin user ID");
   }
@@ -67,7 +69,7 @@ usersController.deleteUser = async (req, res) => {
 
     await fsPromises.writeFile(fileData, JSON.stringify(modifiedUsers));
 
-    res.send("Deleting user");
+    res.send(modifiedUsers);
   } catch (err) {
     return res.send("User not found");
   }

@@ -1,23 +1,21 @@
-const UserCard = () => {
+import { UserCardButton, UserCardContainer, UserCardInfo } from './styles';
+
+const UserCard = ({ id, name, email, action, updateUser, setUserToEdit }) => {
 	return (
-		<div>
+		<UserCardContainer>
+			<UserCardInfo>
+				<h2>{name}</h2>
+				<h3>{email}</h3>
+			</UserCardInfo>
 			<div>
-				<div>
-					<img src='' alt='' />
-				</div>
-				<div>
-					<h2>Name</h2>
-					<h3>Profile</h3>
-					<h3>Email</h3>
-					<h4>Number</h4>
-				</div>
+				<UserCardButton onClick={() => setUserToEdit({ id, name, email })}>
+					<img src='edit.svg'></img>
+				</UserCardButton>
+				<UserCardButton onClick={() => action(id)}>
+					<img src='delete.svg'></img>
+				</UserCardButton>
 			</div>
-			<div>
-				<button>Editar</button>
-				<button>Ver detalles</button>
-				<button>Eliminar</button>
-			</div>
-		</div>
+		</UserCardContainer>
 	);
 };
 

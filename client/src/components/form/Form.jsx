@@ -1,33 +1,34 @@
-import { StyledForm } from './styles';
+import {
+	StyledBoxes,
+	StyledContainer,
+	StyledForm,
+	StyledInput
+} from './styles';
 
-const Form = () => {
+const Form = ({ action, createUser }) => {
 	return (
 		<StyledForm action=''>
-			<div>
-				<div>
+			<StyledContainer>
+				<StyledBoxes>
 					<label htmlFor='name'>Name</label>
-					<input type='text' name='name' />
-				</div>
-				<div>
-					<label htmlFor='profile'>Profile</label>
-					<input type='text' name='profile' />
-				</div>
-				<div>
+					<StyledInput
+						type='text'
+						name='name'
+						onChange={() => action(event.target.value, event.target.name)}
+					/>
+				</StyledBoxes>
+				<StyledBoxes>
 					<label htmlFor='email'>Email</label>
-					<input type='text' name='email' />
-				</div>
+					<StyledInput
+						type='text'
+						name='email'
+						onChange={() => action(event.target.value, event.target.name)}
+					/>
+				</StyledBoxes>
 				<div>
-					<label htmlFor='number'>Number</label>
-					<input type='text' name='number' />
+					<button onClick={createUser}>Create user</button>
 				</div>
-				<div>
-					<button>Choose avatar</button>
-					<button>Create user</button>
-				</div>
-				<div>
-					<img src='' alt='' />
-				</div>
-			</div>
+			</StyledContainer>
 		</StyledForm>
 	);
 };

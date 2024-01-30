@@ -2,7 +2,10 @@ import styled from 'styled-components';
 
 const StyledMain = styled.main`
 	display: flex;
-	flex-direction: column;
+	background-color: darkgrey;
+	padding: 50px;
+	justify-content: space-evenly;
+	height: 100vh;
 `;
 
 export { StyledMain };
